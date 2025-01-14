@@ -1,116 +1,295 @@
-/*1. Soma de Dois Números
-Descrição:
-Peça ao usuário dois números e exiba a soma deles.
-Tarefas:
-Crie uma função soma que receba dois números como parâmetros.
-Exiba o resultado no console ou em um alert.
 
-2. Verificação de Par ou Ímpar
-Descrição:
-Peça ao usuário um número e diga se ele é par ou ímpar.
-Tarefas:
-Crie uma função que receba um número.
-Verifique se o número é divisível por 2.
-Exiba no console "O número é par" ou "O número é ímpar".
+if (document.getElementById("soma"))
+{
+    document.getElementById("soma").addEventListener("submit", soma);
+    function soma(event) {
+        event.preventDefault();
+        const n1 = document.getElementById("n1").value;
+        const n2 = document.getElementById("n2").value;
+        if (n1 !== '' && !isNaN(n1, n2) && n2 !== '') {
+            resultadoN = parseInt(n1) + parseInt(n2);
+            document.getElementById("resultado").innerHTML = `${resultadoN}`;
+        } else {
+            window.alert('Um dos valores está em branco');
+        }
+    }
+};
 
-3. Contagem de Números
-Descrição:
-Exiba os números de 1 a 10 usando um loop.
-Tarefas:
-Utilize um loop for para imprimir os números no console.
-Modifique o exercício para usar um while.
+if (document.getElementById("impparF"))
+{
+    document.getElementById("impparF").addEventListener("submit", imppar);
+    function imppar (event) {
+        event.preventDefault();
+        const n1 = document.getElementById("n1").value;
+        if (n1 !== '' && !isNaN(n1)) {
+            if (n1 % 2) {
+                window.alert("ímpar")
+            } else {
+                window.alert("Par")
+            }
+        } else {
+            window.alert('Valor em branco');
+        }
+    }
+};
 
-4. Tabuada de um Número
-Descrição:
-Crie uma tabuada para um número informado pelo usuário.
-Tarefas:
-Peça ao usuário um número.
-Use um loop for para multiplicar o número de 1 a 10.
-Exiba o resultado no console.
+if (document.getElementById("forzin")) {
+    document.getElementById("forzin").addEventListener("submit", ItoX);
+    function ItoX(event) {
+        event.preventDefault();
+        const fieldset = document.getElementById("numerosFieldset");
+        fieldset.innerHTML = '';
+        for (let i = 0; i <= 10; i++) {
+            const numberElement = document.createElement("span");
+            numberElement.textContent = i;
+            fieldset.appendChild(numberElement);
+            fieldset.appendChild(document.createElement("br"));
+        }
+    }
+};
 
-5. Encontrar o Maior Número em uma Lista
-Descrição:
-Dado um array de números, encontre o maior valor.
-Tarefas:
-Crie um array como [3, 7, 2, 9, 5].
-Use um loop para comparar os números e encontrar o maior.
-Exiba o maior número no console.
+if (document.getElementById("tabuadaForm")) {
+    document.getElementById("tabuadaForm").addEventListener("submit", tabuadaF);
+    function tabuadaF(event) {
+        event.preventDefault();
+        const fieldset = document.getElementById("tabuadaFieldset");
+        const n1 = document.getElementById("n1").value; 
 
-6. Inverter uma Palavra
-Descrição:
-Peça ao usuário uma palavra e exiba-a invertida.
-Tarefas:
-Crie uma função que receba uma string.
-Converta a string para um array com o método split.
-Inverta a ordem com o método reverse e transforme novamente em string com join.
+        if (n1) {
+            fieldset.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                const numberElement = document.createElement("span");
+                numberElement.textContent = `${n1} x ${i} = ${n1 * i}`;
+                fieldset.appendChild(numberElement);
+                fieldset.appendChild(document.createElement("br"));
+            }
+        } else {
+            alert('Por favor, insira um número válido.');
+        }
+    }
+};
 
-7. Soma de Elementos de um Array
-Descrição:
-Calcule a soma dos elementos de um array.
-Tarefas:
-Crie um array como [1, 2, 3, 4, 5].
-Use um loop ou o método reduce para somar os valores.
-Exiba o resultado no console.
+if (document.getElementById("numeroForm")) {
+    document.getElementById("numeroForm").addEventListener("submit", maiores);
+    
+    function maiores(event) {
+        event.preventDefault();
+        const input = document.getElementById("numeros").value;
+        const numeros = input.split(',').map(Number);
+        let maior = numeros[0];
+        for (let num of numeros) {
+            if (num > maior) {
+                maior = num;
+            }
+        }
+        window.alert(`O maior número é ${maior}`);
+        }
+};
 
-8. Número Primo
-Descrição:
-Verifique se um número informado pelo usuário é primo.
-Tarefas:
-Crie uma função que receba um número.
-Verifique se ele é divisível apenas por 1 e por ele mesmo.
-Exiba "É primo" ou "Não é primo".
+if (document.getElementById("invertForm")) {
+    document.getElementById("invertForm").addEventListener("submit", inverter);
 
-9. Fatorial de um Número
-Descrição:
-Calcule o fatorial de um número informado pelo usuário.
-Tarefas:
-Crie uma função que receba um número.
-Use um loop para multiplicar os números de 1 até o número informado.
-Exiba o resultado no console.
+    function inverter(event) {
+        event.preventDefault();
+        let palavra = document.getElementById("palavra").value;
+        let palavraInvertida = '';
 
-10. Verificar Palíndromo
-Descrição:
-Verifique se uma palavra informada pelo usuário é um palíndromo (lê-se igual de trás para frente).
-Tarefas:
-Crie uma função que receba uma string.
-Inverta a string e compare com o original.
-Exiba no console se a palavra é ou não um palíndromo.
+        for (let i = palavra.length - 1; i >= 0; i--) {
+            palavraInvertida += palavra[i];
+        }
+        window.alert(palavraInvertida)
+    }
+};
 
-11. Contar Vogais em uma Frase
-Descrição:
-Dada uma frase, conte o número de vogais.
-Tarefas:
-Peça ao usuário uma frase.
-Use um loop para verificar cada caractere.
-Conte as vogais (a, e, i, o, u) e exiba o total.
+if (document.getElementById("numeroSomaForm")) {
+    document.getElementById("numeroSomaForm").addEventListener("submit", somarNumeros);
 
-12. Gerar Números Aleatórios
-Descrição:
-Gere um número aleatório entre 1 e 100.
-Tarefas:
-Use a função Math.random e ajuste o intervalo para 1 a 100.
-Exiba o número gerado no console.
+    function somarNumeros(event) {
+        event.preventDefault();
+        const input = document.getElementById("numeros").value;
+        if (input.trim() === "") {
+            window.alert("Por favor, insira números válidos.");
+            return;
+        }
 
-13. Substituir Números Negativos por Zero
-Descrição:
-Dado um array de números, substitua todos os números negativos por zero.
-Tarefas:
-Crie um array como [4, -3, 2, -1, 0].
-Use um loop para verificar cada número.
-Substitua os números negativos por 0 e exiba o array no console.
+        const numeros = input.split(',').map(Number);
+        let resultado = 0;
 
-14. Verificar Palavras Proibidas em um Texto
-Descrição:
-Verifique se uma frase contém palavras proibidas.
-Tarefas:
-Crie um array de palavras proibidas como ['palavra1', 'palavra2'].
-Peça ao usuário uma frase.
-Verifique se a frase contém alguma palavra do array e exiba uma mensagem de alerta.
+        for (let num of numeros) {
+            resultado += num;
+        }
 
-15. Gerar uma Lista de Números Pares
-Descrição:
-Crie uma lista de números pares entre 1 e 20.
-Tarefas:
-Use um loop para gerar os números pares.
-Adicione os números a um array e exiba-o no console.
-*/
+        window.alert(`A soma dos números é ${resultado}`);
+    }
+};
+
+if (document.getElementById("primoForm")) {
+    document.getElementById("primoForm").addEventListener("submit", primos);
+
+    function primos(event) {
+        event.preventDefault();
+        let n1 = parseInt(document.getElementById("numero").value, 10);
+        let ehPrimo = true;
+
+        if (isNaN(n1) || n1 <= 1) {
+            window.alert("Por favor, insira um número válido maior que 1.");
+            return;
+        }
+
+        for (let i = 2; i < n1; i++) {
+            if (n1 % i === 0) {
+                ehPrimo = false;
+                break;
+            }
+        }
+
+        if (ehPrimo) {
+            window.alert("É primo");
+        } else {
+            window.alert("Não é primo.");
+        }
+    }
+};
+
+if (document.getElementById("fatorialForm")) {
+    document.getElementById("fatorialForm").addEventListener("submit", fatoriar);
+
+    function fatoriar(event) {
+        event.preventDefault();
+        let base = parseFloat(document.getElementById("base").value);
+        let fatorial = parseFloat(document.getElementById("fatorial").value);
+
+        if (isNaN(base) || isNaN(fatorial)) {
+            window.alert("Por favor, insira valores numéricos válidos.");
+            return;
+        }
+
+        if (base < 0 || fatorial < 0) {
+            window.alert("Por favor, insira números não negativos.");
+            return;
+        }
+
+        if (base === 0 && fatorial === 0) {
+            window.alert("Base 0 e expoente 0 não é uma operação válida.");
+            return;
+        }
+
+        let resultado = base ** fatorial;
+
+        window.alert(`Resultado: ${resultado}`);
+    }
+};
+
+if (document.getElementById("palindromoForm")) {
+    document.getElementById("palindromoForm").addEventListener("submit", palindromes) 
+        function palindromes (event) {
+            event.preventDefault(); 
+            let palavra = document.getElementById("palavra").value;
+
+            if (!isNaN(palavra)) {
+                window.alert("Por favor, insira uma palavra válida.");
+                return;
+            }
+
+            let palavraInvertida = '';
+            for (let i = palavra.length - 1; i >= 0; i--) {
+                palavraInvertida += palavra[i];
+            }
+
+            if (palavra === palavraInvertida) {
+                window.alert("Palíndromo");
+            } else {
+                window.alert("Não é palíndromo");
+            };
+        }     
+};
+
+if (document.getElementById("vogalForm")) {
+    document.getElementById("vogalForm").addEventListener("submit", contarVogais);
+
+    function contarVogais(event) {
+        event.preventDefault();
+        let palavra = document.getElementById("palavra").value;
+        let vogais = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+        let contador = 0;
+
+        for (let i of palavra) {
+            if (vogais.includes(i)) {
+                contador++;
+            }
+        }
+
+        window.alert(`A palavra contém ${contador} vogais.`);
+    }
+};
+
+if (document.getElementById("randomForm")) {
+    document.getElementById("randomForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+        window.alert(`Número Aleatório: ${numeroAleatorio}`);
+    });
+};
+
+if (document.getElementById("negativoForm")) {
+    document.getElementById("negativoForm").addEventListener("submit", notnegativo);
+    
+    function notnegativo(event) {
+        event.preventDefault();
+        const input = document.getElementById("numeros").value;
+        const numeros = input.split(',').map(Number);
+        let semnega = [];
+
+        for (let num of numeros) {
+            if (num < 0) {
+                semnega.push(0);
+            } else {
+                semnega.push(num);  
+            }
+        }
+
+        window.alert(`Sem negativos: ${semnega}`);
+    }
+};
+
+if (document.getElementById("proibidasForm")) {
+    document.getElementById("proibidasForm").addEventListener("submit", proibidao);
+    
+    function proibidao(event) {
+        event.preventDefault();
+        const frase = document.getElementById("frase").value;
+        const palavrasProibidas = ['zezao', 'kaique']; 
+        let naoPode = false;
+
+        for (let palavra of palavrasProibidas) {
+            if (frase.includes(palavra)) {
+                naoPode = true;
+                break;
+            }
+        }
+
+        if (naoPode) {
+            window.alert("A frase contém palavras proibidas.");
+        } else {
+            window.alert("A frase não contém palavras proibidas.");
+        }
+    }
+};
+
+if (document.getElementById("npForm")) {
+    document.getElementById("npForm").addEventListener("submit", parXX);
+    
+    function parXX(event) {
+        event.preventDefault();
+        const fieldset = document.getElementById("npFieldset");
+        fieldset.innerHTML = '';
+        for (let i = 1; i <= 20; i++) {
+            if (i % 2 === 0) {
+                const numberElement = document.createElement("span");
+                numberElement.textContent = i;
+                fieldset.appendChild(numberElement);
+                fieldset.appendChild(document.createElement("br"));
+            }
+        }
+    }
+}
